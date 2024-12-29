@@ -1,7 +1,7 @@
 import { menu } from "./menu.js";
 import {displayTodos} from "./utils/displayTodos.js";
 
-const todoList = [
+ export const todoList = [
   {
     id: 1,
     name: "Anything ...",
