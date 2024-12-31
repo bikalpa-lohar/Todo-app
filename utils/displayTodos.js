@@ -1,5 +1,5 @@
 import { actionBtnList } from "../menu.js";
-import { todoList } from "../script.js";
+import { inputDate, obj, textInput, todoList } from "../script.js";
 
 export const displayTodos = (todos) => {
   const todosList = document.getElementById("todosList");
@@ -65,6 +65,8 @@ function createTodo(todo, idx, todos) {
   return li;
 }
 
+export const itemToUpdate = [];
+
 function handleActionBtn(btnObj, todoObj, todoIdx, todos) {
   switch (btnObj.type) {
     case "complete":
@@ -72,7 +74,14 @@ function handleActionBtn(btnObj, todoObj, todoIdx, todos) {
 
       break;
     case "update":
-      // add some code
+
+      itemToUpdate.length = 0;
+      itemToUpdate.push(todoObj);
+      obj.name = itemToUpdate[0].name;
+      obj.dueDate = itemToUpdate[0].dueDate;
+      textInput.value = itemToUpdate[0].name;
+      inputDate.value = itemToUpdate[0].dueDate;
+
       break;
     case "favorite":
       todoObj.isFavorite = !todoObj.isFavorite;

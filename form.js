@@ -1,11 +1,23 @@
 import { inputDate, obj, textInput, todoList } from "./script.js";
-import { displayTodos } from "./utils/displayTodos.js";
+import { displayTodos, itemToUpdate } from "./utils/displayTodos.js";
 
 export function handlesubmit(e) {
   e.preventDefault();
 
   if (!obj?.name || !obj?.dueDate) {
     return;
+  }
+  if (itemToUpdate.length) {
+    itemToUpdate[0].name = obj.name;
+    itemToUpdate[0].dueDate = obj.dueDate;
+
+    textInput.value = "";
+    obj.name = undefined;
+
+    inputDate.value = "";
+    obj.dueDate = undefined;
+    displayTodos(todoList)
+    return
   }
   const todoFile = {
     id: todoList.length + 1,
