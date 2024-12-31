@@ -1,7 +1,8 @@
-import { menu } from "./menu.js";
-import {displayTodos} from "./utils/displayTodos.js";
+import { handlesubmit } from "./form.js";
+import { displayHeader } from "./utils/displayHeader.js";
+import { displayTodos } from "./utils/displayTodos.js";
 
- export const todoList = [
+export const todoList = [
   {
     id: 1,
     name: "Anything ...",
@@ -36,54 +37,25 @@ import {displayTodos} from "./utils/displayTodos.js";
   },
 ];
 
-let completeTodoArr = [];
-let inCompleteTodoArr = [];
+export const navbar = document.getElementById("navbar");
 
-let favoriteTodoArr = [];
+export const obj = {};
 
-const navbar = document.getElementById("navbar");
-
-const logo = document.createElement("h2");
-logo.innerText = "My Todo";
-
-const navUl = document.createElement("ul");
-navUl.classList.add("nav");
-
-// // nav.id="nav"
-//  //nav.setAttribute("class", "nav")
-
-navbar.appendChild(logo);
-navbar.appendChild(navUl);
-
-menu.forEach((value) => {
-  const navigator = document.createElement("li");
-  navigator.innerText = value.name;
-
-  navigator.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    if (value.name === "Home") {
-      displayTodos(todoList);
-    } else if (value.name === "Completed") {
-      completeTodoArr = todoList.filter((item) => item.isCompleted);
-
-      displayTodos(completeTodoArr);
-    } else if (value.name === "Incomplete") {
-      inCompleteTodoArr = todoList.filter((item) => !item.isCompleted);
-
-      displayTodos(inCompleteTodoArr);
-    } else if (value.name === "Favorite") {
-      favoriteTodoArr = todoList.filter((item) => item.isFavorite);
-
-      displayTodos(favoriteTodoArr);
-    }
-    return;
-  });
-
-  navUl.appendChild(navigator);
+export const textInput = document.getElementById("todo");
+textInput.addEventListener("input", function (e) {
+  obj.name = e.target.value;
 });
 
+export const inputDate = document.getElementById("date");
+inputDate.addEventListener("input", function (e) {
+  obj.dueDate = e.target.value;
+});
+export const submitBtn = document.getElementById("submitBtn");
+submitBtn.addEventListener("click", handlesubmit);
+
 displayTodos(todoList);
+
+displayHeader();
 
 // {
 //     id: 1,

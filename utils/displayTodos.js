@@ -4,7 +4,6 @@ import { todoList } from "../script.js";
 export const displayTodos = (todos) => {
   const todosList = document.getElementById("todosList");
   todosList.innerHTML = "";
-
   // converting array of object into html
   const modifiedTodos = todos.map(createTodo);
   //   appending each item of modifiedTodos into todosList
@@ -31,9 +30,8 @@ function createTodo(todo, idx, todos) {
   const modifiedActionBtnList = actionBtnList.map((btn) => {
     const actionBtn = document.createElement("button");
     actionBtn.addEventListener("click", (e) => {
-        handleActionBtn(btn, todo, idx, todos);
-      });
-
+      handleActionBtn(btn, todo, idx, todos);
+    });
 
     const actionImg = document.createElement("img");
     actionImg.src = btn.img;
@@ -42,24 +40,23 @@ function createTodo(todo, idx, todos) {
     actionImg.height = 32;
 
     switch (btn.type) {
-        case "complete":
-          actionImg.src = todo.isCompleted
-            ? "../images/complete.svg"
-            : "../images/incomplete.svg";
-          break;
-  
-        case "favorite":
-          actionImg.src = todo.isFavorite
-            ? "../images/favorite.svg"
-            : "../images/not-favorite.svg";
-          break;
-      }
+      case "complete":
+        actionImg.src = todo.isCompleted
+          ? "../images/complete.svg"
+          : "../images/incomplete.svg";
+        break;
+
+      case "favorite":
+        actionImg.src = todo.isFavorite
+          ? "../images/favorite.svg"
+          : "../images/not-favorite.svg";
+        break;
+    }
 
     actionBtn.appendChild(actionImg);
 
     return actionBtn;
   });
-
 
   modifiedActionBtnList.forEach((htmlBtn) => {
     actionBtnDiv.appendChild(htmlBtn);
@@ -72,14 +69,14 @@ function handleActionBtn(btnObj, todoObj, todoIdx, todos) {
   switch (btnObj.type) {
     case "complete":
       todoObj.isCompleted = !todoObj.isCompleted;
-     
+
       break;
     case "update":
       // add some code
       break;
     case "favorite":
       todoObj.isFavorite = !todoObj.isFavorite;
-      
+
       break;
     case "delete":
       todoList.splice(todoIdx, 1);
