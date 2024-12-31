@@ -74,7 +74,6 @@ function handleActionBtn(btnObj, todoObj, todoIdx, todos) {
 
       break;
     case "update":
-
       itemToUpdate.length = 0;
       itemToUpdate.push(todoObj);
       obj.name = itemToUpdate[0].name;
@@ -91,5 +90,7 @@ function handleActionBtn(btnObj, todoObj, todoIdx, todos) {
       todoList.splice(todoIdx, 1);
       break;
   }
+  localStorage.setItem("todos", JSON.stringify(todoList));
+
   displayTodos(todos);
 }

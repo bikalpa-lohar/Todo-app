@@ -52,11 +52,19 @@ inputDate.addEventListener("input", function (e) {
 });
 export const submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener("click", handlesubmit);
+getTodos()
 
 displayTodos(todoList);
 
 displayHeader();
 
+export function getTodos(){
+ const todos= localStorage.getItem("todos");
+ const parsedTodos= JSON.parse(todos);
+ todoList.length=0;
+ parsedTodos?.forEach(item => todoList.push(item));
+//  optional chaining
+}
 // {
 //     id: 1,
 //     name: "Anything ...",

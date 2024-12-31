@@ -16,8 +16,10 @@ export function handlesubmit(e) {
 
     inputDate.value = "";
     obj.dueDate = undefined;
-    displayTodos(todoList)
-    return
+    displayTodos(todoList);
+    localStorage.setItem("todos", JSON.stringify(todoList));
+
+    return;
   }
   const todoFile = {
     id: todoList.length + 1,
@@ -28,6 +30,8 @@ export function handlesubmit(e) {
     dueDate: obj.dueDate,
   };
   todoList.push(todoFile);
+
+  localStorage.setItem("todos", JSON.stringify(todoList));
 
   textInput.value = "";
   obj.name = undefined;
