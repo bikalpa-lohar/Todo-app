@@ -1,41 +1,170 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  max-width: 1350px;
+  margin: auto;
+  padding: 0 40px;
 }
 
 /* ----------HEADER------------ */
 
-#navbar{
-    width: 100%;
-    height: 5rem;
-    border: 2px solid red;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    user-select: none;
+#navbar {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  background-color: rgb(255, 255, 255);
 }
 
-#navbar > h2{
-    
+#navbar > h2 {
+  font-family: serif;
+  color: rgb(49, 53, 111);
 }
 
-.nav{
-    list-style-type:none;
-    display: flex;
-    gap: 2rem;
+.nav {
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
 }
 
-.nav > li{
-
-    cursor: pointer;
+.nav > li {
+  color: rgba(3, 6, 50, 0.667);
+  font-size: 18px;
+  font-weight: 800;
+  position: relative;
+  width: max-content;
+  cursor: pointer;
+  padding: 1px 5px;
 }
 
+.nav > li:hover::before {
+  content: "";
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(5, 38, 109, 0.362),
+    rgba(244, 99, 3, 0.499)
+  );
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
-.nav > li.active{
-    color:blue;
+.nav > li.active {
+  background: linear-gradient(
+    to right,
+    rgba(5, 38, 109, 0.362),
+    rgba(244, 99, 3, 0.499)
+  );
+  color: white;
+  border-radius: 3px;
+}
 
+/* -----------FORM--------------- */
+
+#inputField {
+  width: 100%;
+  height: 4rem;
+  padding: 17px 0;
+  background-color: white;
+  position: sticky;
+  top: 4rem;
+  align-items: center;
+}
+
+#todo {
+  width: 290px;
+  height: 30px;
+  outline: none;
+  background-color: rgba(38, 72, 69, 0.093);
+  padding: 0 20px;
+  border-color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#date {
+  width: 120px;
+  height: 27px;
+  padding: 0 8px;
+  border-color: white;
+  font-style: italic;
+  cursor: pointer;
+  user-select: none;
+}
+
+#submitBtn {
+  margin-left: 20px;
+  background-color: white;
+  padding: 2px 9px;
+  border-radius: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+  font-weight: 900;
+  color: rgba(3, 6, 50, 0.667);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+#submitBtn:hover {
+  background-color: rgb(255, 99, 71);
+  color: white;
+}
+
+/* --------------todosList-------------- */
+
+#todosList {
+  list-style-type: none;
+  padding: 10px 16px;
+  user-select: none;
+}
+
+#todosList .todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid rgba(207, 202, 202, 0.511);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 4px;
+}
+
+#todosList .todo-item .todo-name {
+  color: rgba(3, 6, 50, 0.667);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  font-weight: 900;
+  width: 70%;
+}
+#todosList .todo-item .action-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+#todosList .todo-item .action-btn button {
+  background-color: white;
+  border: none;
+  width: 40px;
+  aspect-ratio: 14/13;
+  cursor: pointer;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+#todosList .todo-item .action-btn button:hover {
+  transform: scale(1.25);
 }
